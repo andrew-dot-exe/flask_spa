@@ -9,6 +9,7 @@ columns_person = {
     'Фамилия': person_generator.get_surname,
     #TODO:'Отчество': person_generator.get_name,
     #TODO: FIO
+    'Имя, фамилия': person_generator.get_fullname,
     'Возраст': person_generator.get_age,
     'Номер телефона': person_generator.get_phone_number,
     'Номер паспорта': person_generator.get_passport_number,
