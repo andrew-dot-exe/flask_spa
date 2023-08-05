@@ -22,6 +22,18 @@ columns_address = {
     'Индекс': address_generator.get_postal_code
 }
 
+def get_generated_info(columns: list, amount: int) -> list:
+    values = [] # like [(),(),()]
+    for i in range(amount):
+        value = []
+        for column in columns:
+            if column in columns_person.keys():
+                value.append(columns_person[column]())
+            elif column in columns_address.keys():
+                value.append(columns_address[column]())
+        values.append(value)
+    return values
+    
+
 if __name__ == '__main__':
-    l = list(columns_person.keys())
-    print(l[0])
+    print(get_generated_info(['Фамилия','Имя','Номер паспорта'], 10))

@@ -15,46 +15,41 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        {% for col in gen_cols %}
+                        <th scope="col">{{ col }}</th>
+                        {% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+                      {% for value in values %}
+                          
+                          <tr>
+                            {% for column in value %}
+                            <td>{{ column }}</td>
+                            {% endfor %}
+                          </tr>
+                          
+                      {% endfor %}
                     </tbody>
                   </table>
             </div>
             <div class="col">
+              <form action="/generate" method="post">
                 <ul class="list-group">
                 {% for column in columns %}
                     <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="{{ column }}">
+                    <input class="form-check-input me-1" type="checkbox" name="to_generate" id="{{ column }}" value="{{ column }}">
                     <label class="form-check-label" for="{{ column }}">{{ column }}</label>
                     </li>
                 {% endfor %}
                 </ul>
-                <button class="btn btn-primary mt-3">generate</button>
+                  <label for="records_amount">Amount
+                  <input type="number" name="records_amount">
+                  <button class="btn btn-primary mt-3" type="submit">generate</button>
+                  </label>
+
+              </form>
             </div>
 </div>
     </div>
-</body>task managero" style="background-color: rgba(0, 0, 255, 0.1)">
-    Height 100%
+</body>
