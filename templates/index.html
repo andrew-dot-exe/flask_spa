@@ -45,18 +45,12 @@
             </div>
             <div class="col">
                 <ul class="list-group">
+                {% for column in columns %}
                     <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                    <label class="form-check-label" for="firstCheckbox">Первый чекбокс</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="{{ column }}">
+                    <label class="form-check-label" for="{{ column }}">{{ column }}</label>
                     </li>
-                    <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                    <label class="form-check-label" for="secondCheckbox">Второй чекбокс</label>
-                    </li>
-                    <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                    <label class="form-check-label" for="thirdCheckbox">Третий чекбокс</label>
-                    </li>
+                {% endfor %}
                 </ul>
                 <button class="btn btn-primary mt-3">generate</button>
             </div>
