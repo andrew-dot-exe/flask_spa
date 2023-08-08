@@ -88,8 +88,8 @@ class PersonGenerator:
             gender = self.decide_gender()
         if gender == Genders.ANY:
             gender = self.decide_gender(reroll=True)
-        return ''.join([self.get_surname(gender), self.get_name(gender), self.get_patronymic(gender)])
-    
+        return ' '.join([self.get_surname(gender), self.get_name(gender), self.get_patronymic(gender)])
+
     def get_age(self):
         """
         Этот метод возвращает возраст.
