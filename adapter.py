@@ -23,13 +23,20 @@ columns_address = {
     'Индекс': address_generator.get_postal_code
 }
 
-def get_generated_info(columns: list, amount: int) -> list:
+def get_generated_info(columns: list, amount: int, gender = None) -> list:
     values = [] # like [(),(),()]
     for i in range(amount):
         value = []
         for column in columns:
             if column in columns_person.keys():
-                value.append(columns_person[column]())
+                """ 
+                первым трем полям нужно передавать значение пола, если оно есть.
+                так делать не очень хорошо, но пока не хочется городить огороды.
+                """
+                if gender != 'Any' and 'gender' in columns_person[column].__code__.co_varnames:
+                    value.append(columns_person[column](gender))
+                else:
+                    value.append(columns_person[column]())
             elif column in columns_address.keys():
                 value.append(columns_address[column]())
         values.append(value)

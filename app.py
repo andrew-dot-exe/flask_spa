@@ -21,5 +21,6 @@ def route_main():
 def generate():
     gen_cols = request.form.getlist('to_generate')
     amount = int(request.form.get('records_amount'))
-    values = adapter.get_generated_info(gen_cols, amount)
+    gender = request.form.get('gender')
+    values = adapter.get_generated_info(gen_cols, amount, gender)
     return render_template('index.html', columns=columns, name=None, gen_cols=gen_cols, values=values)

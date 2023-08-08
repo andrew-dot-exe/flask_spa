@@ -35,7 +35,7 @@ class PersonGenerator:
             return self.names
         return self.names[gender]
     
-    def decide_gender(self, reroll=False) -> str:
+    def decide_gender(self, reroll=True) -> str:
         """
         Этот метод выбирает пол для дальнейшей генерации.
         Если reroll=True, то этот метод возвращает новый пол,
