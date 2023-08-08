@@ -7,8 +7,8 @@ address_generator = AddressGenerator()
 columns_person = {
     'Имя': person_generator.get_name,
     'Фамилия': person_generator.get_surname,
-    #TODO:'Отчество': person_generator.get_name,
-    #TODO: FIO
+    'Отчество': person_generator.get_patronymic,
+    'ФИО': person_generator.get_FIO,
     'Имя, фамилия': person_generator.get_fullname,
     'Возраст': person_generator.get_age,
     'Номер телефона': person_generator.get_phone_number,
