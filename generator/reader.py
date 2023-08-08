@@ -22,6 +22,7 @@ class PersonGenerator:
         f.close()
         self.names = json_l["names"]
         self.surnames = json_l["surnames"]
+        self.patronymcs = json_l["patronymic"]
         self.selected_gender = None
         self.age = None
     
@@ -62,6 +63,11 @@ class PersonGenerator:
         if gender == None:
             gender = self.decide_gender()
         return choice(self.surnames[gender])
+    
+    def get_patronymic(self, gender = None):
+        if gender == None:
+            gender = self.decide_gender()
+        return choice(self.patronymcs[gender])
     
     def get_fullname(self, gender = None):
         """
@@ -154,6 +160,5 @@ class AddressGenerator:
         return f"г. {city}, ул. {street}, {str(self.get_street_number())} "
 
 if __name__ == '__main__':
-    ag = AddressGenerator()
-    print(ag.get_full_address())
-    print(ag.get_postal_code())
+    pg = PersonGenerator()
+    print(pg.get_patronymic())

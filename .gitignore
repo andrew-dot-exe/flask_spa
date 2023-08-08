@@ -161,3 +161,6 @@ cython_debug/
 generator/__pycache__/__init__.cpython-311.pyc
 generator/__pycache__/save.cpython-311.pyc
 generator/__pycache__/__init__.cpython-311.pyc
+generator/__pycache__/__init__.cpython-311.pyc
+generator/__pycache__/reader.cpython-311.pyc
+generator/__pycache__/save.cpython-311.pyc
