@@ -1,3 +1,5 @@
+import csv
+
 from generator import *
 
 
@@ -42,6 +44,17 @@ def get_generated_info(columns: list, amount: int, gender = None) -> list:
         values.append(value)
     return values
     
+
+def save_json():
+    pass
+
+def save_csv(values: list):
+    print(values)
+    with open('download/values.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',')
+        for value in values:
+            writer.writerow(value)
+    return 'values.csv' # return name of file for download.
 
 if __name__ == '__main__':
     print(get_generated_info(['Фамилия','Имя','Номер паспорта'], 10))
