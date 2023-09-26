@@ -1,10 +1,8 @@
 from flask import *
-import os
 
 import adapter
 
 """
-TODO: сделать сохранение данных в формате csv, json
 TODO: сделать генерацию скрипта для sql
 
 TODO: оптимизация верстки
@@ -31,6 +29,13 @@ def generate():
 @app.route('/download', methods=['GET'])
 def download():
     filename = adapter.save_csv(gen_values)
+    return send_from_directory(
+        'download', filename, as_attachment=True
+    )
+    
+@app.route('/download_json', methods=['GET'])
+def download_json():
+    filename = adapter.save_json(gen_values)
     return send_from_directory(
         'download', filename, as_attachment=True
     )

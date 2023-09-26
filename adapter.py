@@ -1,7 +1,7 @@
 import csv
+import json
 
 from generator import *
-
 
 person_generator = PersonGenerator()
 address_generator = AddressGenerator()
@@ -45,11 +45,13 @@ def get_generated_info(columns: list, amount: int, gender = None) -> list:
     return values
     
 
-def save_json():
-    pass
+def save_json(values: list):
+    with open('download/values.json', 'w') as jsonfile:
+        json.dump(values, jsonfile, ensure_ascii=False, sort_keys=True, indent=4)
+    return 'values.json' # return name of file for download.
+
 
 def save_csv(values: list):
-    print(values)
     with open('download/values.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
         for value in values:
@@ -57,4 +59,5 @@ def save_csv(values: list):
     return 'values.csv' # return name of file for download.
 
 if __name__ == '__main__':
-    print(get_generated_info(['Фамилия','Имя','Номер паспорта'], 10))
+    values = get_generated_info(['Фамилия','Имя','Номер паспорта'], 10)
+    print(save_json(values))
