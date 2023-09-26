@@ -2,6 +2,8 @@ from flask import *
 
 import adapter
 
+import os
+
 """
 TODO: сделать генерацию скрипта для sql
 
@@ -29,6 +31,12 @@ def generate():
 @app.route('/download', methods=['GET'])
 def download():
     filename = adapter.save_csv(gen_values)
+    
+    @after_this_request
+    def delete_file(response):
+        os.remove(os.path.join('download', filename))
+        return response
+    
     return send_from_directory(
         'download', filename, as_attachment=True
     )
@@ -36,6 +44,12 @@ def download():
 @app.route('/download_json', methods=['GET'])
 def download_json():
     filename = adapter.save_json(gen_values)
+    
+    @after_this_request
+    def delete_file(response):
+        os.remove(os.path.join('download', filename))
+        return response
+    
     return send_from_directory(
         'download', filename, as_attachment=True
     )
